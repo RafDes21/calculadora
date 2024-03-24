@@ -18,6 +18,9 @@ class MainViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             "-" -> binding.floatingButton.setTextColor(ContextCompat.getColor(context, R.color.accent))
             "*" -> binding.floatingButton.setTextColor(ContextCompat.getColor(context, R.color.accent))
             "/" -> binding.floatingButton.setTextColor(ContextCompat.getColor(context, R.color.accent))
+            "C" -> binding.floatingButton.setTextColor(ContextCompat.getColor(context, R.color.accent))
+            "+/-" -> binding.floatingButton.setTextColor(ContextCompat.getColor(context, R.color.accent))
+            "%" -> binding.floatingButton.setTextColor(ContextCompat.getColor(context, R.color.accent))
             "=" -> binding.floatingButton.apply {
                 setTextColor(ContextCompat.getColor(context, R.color.white))
                 setBackgroundResource(R.drawable.rounded_button_equal)
