@@ -1,5 +1,6 @@
-package com.rafdev.calculadora
+package com.rafdev.calculadora.ui
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.rafdev.calculadora.data.local.response.ResponseDataButton
@@ -10,14 +11,15 @@ import javax.inject.Inject
 @HiltViewModel
 class MainViewModel @Inject constructor(val getDataButtonUseCase: GetDataButtonUseCase): ViewModel() {
 
-    val dataButton = MutableLiveData<List<ResponseDataButton>>()
+    private val _dataButton = MutableLiveData<List<ResponseDataButton>>()
+    val dataButton: LiveData<List<ResponseDataButton>> = _dataButton
 
     init {
         fetchDataButton()
     }
-    fun fetchDataButton(){
-        val result = getDataButtonUseCase()
-        dataButton.value = result
-    }
 
+    private fun fetchDataButton(){
+        val result = getDataButtonUseCase()
+        _dataButton.value = result
+    }
 }
