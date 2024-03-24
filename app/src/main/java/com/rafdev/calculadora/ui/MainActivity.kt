@@ -12,7 +12,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-    private lateinit var binding:ActivityMainBinding
+    private lateinit var binding: ActivityMainBinding
 
     private val viewModel: MainViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,6 +20,9 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initUI()
+        val input = listOf("5", "*", "3", "+", "8", "/", "2", "-", "3")
+
+        viewModel.performCalculation(input)
     }
 
     private fun initUI() {
@@ -28,11 +31,28 @@ class MainActivity : AppCompatActivity() {
 
     private fun observers() {
         viewModel.dataButton.observe(this) {
-           binding.rvButtons.apply {
-               layoutManager = GridLayoutManager(context, 4)
-               val homeAdapter = MainAdapter(it)
-               adapter = homeAdapter
-           }
+            binding.rvButtons.apply {
+                layoutManager = GridLayoutManager(context, 4)
+                val homeAdapter = MainAdapter(it) {
+                    viewModel.onButtonClicked(it)
+                }
+                adapter = homeAdapter
+            }
         }
+        viewModel.displayValue.observe(this) {
+            addTextInScreen(it)
+        }
+        viewModel.resultData.observe(this) {
+            addResultInTextView(it)
+        }
+    }
+
+    private fun addResultInTextView(it: String) {
+        binding.viewResult.text = it
+        Log.i("jugando", "resuktadi$it")
+    }
+
+    private fun addTextInScreen(values: List<String>?) {
+        binding.viewOperation.text = values?.joinToString(separator = "") ?: ""
     }
 }
