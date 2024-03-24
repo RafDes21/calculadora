@@ -8,4 +8,6 @@
     <color name="accent">#FF8E26</color>
     <color name="custom_screen">#828A7A</color>
     <color name="color_test">#ED0B0B</color>
+    <color name="primary_pressed">#A1EAEDF2</color>
+    <color name="accent_pressed">#A4FF8E26</color>
 </resources>

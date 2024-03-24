@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android"
-    android:shape="oval">
-    <solid android:color="@color/primary" />
-</shape>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Estado cuando el botón está presionado -->
+    <item android:state_pressed="true">
+        <shape android:shape="oval">
+            <solid android:color="@color/primary_pressed" /> <!-- Color semiopaco cuando se presiona -->
+        </shape>
+    </item>
+    <!-- Estado predeterminado -->
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="@color/primary" /> <!-- Color normal del botón -->
+        </shape>
+    </item>
+</selector>
