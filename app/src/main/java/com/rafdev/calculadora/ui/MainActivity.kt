@@ -20,9 +20,9 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initUI()
-        val input = listOf("5", "*", "3", "+", "8", "/", "2", "-", "3")
-
-        viewModel.performCalculation(input)
+//        val input = listOf("5", "*", "3", "+", "8", "/", "2", "-", "3")
+//
+//        viewModel.performCalculation(input)
     }
 
     private fun initUI() {
