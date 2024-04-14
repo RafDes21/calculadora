@@ -1,6 +1,7 @@
 package com.rafdev.calculadora.ui.adapter
 
 import android.view.View
+import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.rafdev.calculadora.R
@@ -24,8 +25,14 @@ class MainViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             "=" -> binding.floatingButton.apply {
                 setTextColor(ContextCompat.getColor(context, R.color.white))
                 setBackgroundResource(R.drawable.rounded_button_equal)
+                val layoutParams = LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT,
+                    LinearLayout.LayoutParams.MATCH_PARENT
+                )
+                layoutParams.setMargins(20, 2, 20, 2)
+                binding.floatingButton.layoutParams = layoutParams
             }
-            else -> binding.floatingButton.setTextColor(ContextCompat.getColor(context, R.color.black))
+
         }
     }
 

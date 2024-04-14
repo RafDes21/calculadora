@@ -32,11 +32,24 @@ class MainActivity : AppCompatActivity() {
     private fun observers() {
         viewModel.dataButton.observe(this) {
             binding.rvButtons.apply {
-                layoutManager = GridLayoutManager(context, 4)
+                layoutManager = GridLayoutManager(context, 4).apply {
+                    spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+                        override fun getSpanSize(position: Int): Int {
+                            // Asumiendo que la cantidad de elementos es suficiente para llenar las filas
+                            // Si es el último ítem y el total de ítems no es múltiplo de 4
+                            return if (position == adapter!!.itemCount - 1 && adapter!!.itemCount % 4 != 0) {
+                                2 // Ocupar dos espacios
+                            } else {
+                                1 // Ocupar un espacio
+                            }
+                        }
+                    }
+                }
                 val homeAdapter = MainAdapter(it) {
                     viewModel.onButtonClicked(it)
                 }
                 adapter = homeAdapter
+
             }
         }
         viewModel.displayValue.observe(this) {

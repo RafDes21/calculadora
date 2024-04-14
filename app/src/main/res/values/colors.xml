@@ -10,4 +10,11 @@
     <color name="color_test">#ED0B0B</color>
     <color name="primary_pressed">#A1EAEDF2</color>
     <color name="accent_pressed">#A4FF8E26</color>
+
+    <color name="primary_dark">#0F1926</color>
+    <color name="secondary_dark">#2E4159</color>
+    <color name="accent_dark">#566D8C</color>
+    <color name="number_color_dark">#9BA7BF</color>
+    <color name="black_transparent_button">#27000000</color>
+    <color name="button_pressed_dark">#BF8136</color>
 </resources>
