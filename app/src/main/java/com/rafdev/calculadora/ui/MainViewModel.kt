@@ -50,29 +50,17 @@ class MainViewModel @Inject constructor(val getDataButtonUseCase: GetDataButtonU
         if (value == "=") {
             return resultData()
         }
-        Log.i("datosnumbre", "value ingresado $value")
 
-//        _displayValue.value = (displayValue.value ?: emptyList()) + value
         val currentDisplay = displayValue.value ?: emptyList()
 
-        // Si el valor es un dígito, acumula los dígitos en una cadena temporal
-        if (value.matches("[0-9]".toRegex())) {
-            Log.i("datosnumbre", "value ingresado matchess numero $value")
-
-            // Añade o concatena el valor actual al último elemento si es un número
+        if (value.matches("[0-9.]".toRegex())) {
             val lastElement = currentDisplay.lastOrNull()
-            if (lastElement != null && lastElement.matches("[0-9]+".toRegex())) {
-                // Concatena el valor actual al último número
-                Log.i("datosnumbre", "value ingresado matchess concatenado $value")
-
+            if (lastElement != null && lastElement.matches("[0-9.]+".toRegex())) {
                 _displayValue.value = currentDisplay.dropLast(1) + (lastElement + value)
             } else {
-                // Inicia un nuevo número
                 _displayValue.value = currentDisplay + value
             }
         } else {
-            Log.i("datosnumbre", "value ingresado signo $value")
-
             _displayValue.value = currentDisplay + value
         }
     }
@@ -82,7 +70,8 @@ class MainViewModel @Inject constructor(val getDataButtonUseCase: GetDataButtonU
         if (mResultCalculator == ResultCalculator.ERROR) {
             _resultData.value = "0"
             mResultCalculator = null
-        }    }
+        }
+    }
 
     private fun resultData() {
         _displayValue.value?.let { performCalculation(it) }
@@ -91,7 +80,6 @@ class MainViewModel @Inject constructor(val getDataButtonUseCase: GetDataButtonU
     private fun performCalculation(input: List<String>) {
         val numbers = mutableListOf<Double>()
         val operators = mutableListOf<String>()
-
 
         try {
             // Iterar sobre la lista de entrada para separar los números y los operadores

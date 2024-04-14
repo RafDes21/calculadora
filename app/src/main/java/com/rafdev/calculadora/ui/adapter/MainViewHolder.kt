@@ -29,7 +29,7 @@ class MainViewHolder(view: View) : RecyclerView.ViewHolder(view) {
                     LinearLayout.LayoutParams.MATCH_PARENT,
                     LinearLayout.LayoutParams.MATCH_PARENT
                 )
-                layoutParams.setMargins(20, 2, 20, 2)
+                layoutParams.setMargins(30, 5, 20, 5)
                 binding.floatingButton.layoutParams = layoutParams
             }
 
