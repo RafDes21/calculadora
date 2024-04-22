@@ -59,6 +59,10 @@ dependencies {
 
     implementation("com.google.dagger:hilt-android:$versionDagger")
     kapt("com.google.dagger:hilt-android-compiler:$versionDagger")
+
+    //calculator
+    implementation ("net.objecthunter:exp4j:0.4.8")
+
 }
 kapt {
     correctErrorTypes = true

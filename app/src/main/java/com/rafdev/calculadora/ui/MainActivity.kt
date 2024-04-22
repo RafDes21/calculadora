@@ -2,10 +2,11 @@ package com.rafdev.calculadora.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
 import android.util.Log
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
+import net.objecthunter.exp4j.ExpressionBuilder
 import com.rafdev.calculadora.databinding.ActivityMainBinding
 import com.rafdev.calculadora.ui.adapter.MainAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -20,6 +21,25 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initUI()
+
+
+//        val expression = "2 * -3 "
+//        val result = ExpressionBuilder(expression)
+//            .build()
+//            .evaluate()
+//
+//        binding.viewResult.text = result.toString()
+
+//        buttonCalculate.setOnClickListener {
+//            val expression = editTextExpression.text.toString()
+//
+//            try {
+//                val result = ExpressionBuilder(expression).build().evaluate()
+//                textViewResult.text = "Resultado: $result"
+//            } catch (e: Exception) {
+//                textViewResult.text = "Error: ${e.message}"
+//            }
+//        }
     }
 
     private fun initUI() {
@@ -43,25 +63,31 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
                 val homeAdapter = MainAdapter(it) {
-                    viewModel.onButtonClicked(it)
+                    viewModel.appendToExpression(it)
                 }
                 adapter = homeAdapter
 
             }
         }
-        viewModel.displayValue.observe(this) {
-            addTextInScreen(it)
-        }
-        viewModel.resultData.observe(this) {
-            addResultInTextView(it)
-        }
-    }
 
-    private fun addResultInTextView(it: String) {
-        binding.viewResult.text = it
-    }
+        viewModel.expression.observe(this) {
+            binding.viewOperation.text = Editable.Factory.getInstance().newEditable(it)
 
-    private fun addTextInScreen(values: List<String>?) {
-        binding.viewOperation.text = values?.joinToString(separator = "") ?: ""
+        }
+//        viewModel.displayValue.observe(this) {
+//            addTextInScreen(it)
+//        }
+//        viewModel.resultData.observe(this) {
+//            addResultInTextView(it)
+//        }
+//    }
+//
+//    private fun addResultInTextView(it: String) {
+//        binding.viewResult.text = it
+//    }
+//
+//    private fun addTextInScreen(values: List<String>?) {
+//
+//    }
     }
 }

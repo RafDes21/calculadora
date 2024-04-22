@@ -8,95 +8,36 @@
     android:paddingTop="40dp"
     tools:context=".ui.MainActivity">
 
-    <!--    <LinearLayout-->
-    <!--        android:id="@+id/view_screen"-->
+    <!--    <com.google.android.material.textfield.TextInputLayout-->
+    <!--        android:id="@+id/view_operation_content"-->
     <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="150dp"-->
-    <!--        android:layout_marginHorizontal="20dp"-->
-    <!--        android:background="@drawable/screen_shadow"-->
-    <!--        android:elevation="10dp"-->
-    <!--        android:padding="3dp"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:hint="0"-->
+    <!--        app:layout_constraintTop_toTopOf="parent"-->
     <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toTopOf="parent">-->
+    <!--        app:layout_constraintEnd_toEndOf="parent">-->
 
-    <!--        <LinearLayout-->
-    <!--            android:layout_width="match_parent"-->
-    <!--            android:layout_height="match_parent"-->
-    <!--            android:background="@drawable/rounded_content_screen"-->
-    <!--            android:padding="5dp">-->
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/view_operation"
+        android:layout_width="match_parent"
+        android:textAlignment="textEnd"
+        android:maxLines="1"
+        android:layout_height="wrap_content"
+        android:textSize="50sp"
+        android:inputType="text"
+        app:layout_constraintTop_toTopOf="parent" />
+    <!--    </com.google.android.material.textfield.TextInputLayout>-->
 
-    <!--            <androidx.constraintlayout.widget.ConstraintLayout-->
-    <!--                android:layout_width="match_parent"-->
-    <!--                android:layout_height="match_parent"-->
-    <!--                android:background="@drawable/rounded_screen"-->
-    <!--                android:orientation="vertical"-->
-    <!--                android:padding="10dp">-->
-
-    <!--                <HorizontalScrollView-->
-    <!--                    android:layout_width="match_parent"-->
-    <!--                    android:layout_height="wrap_content"-->
-    <!--                    app:layout_constraintStart_toStartOf="parent"-->
-    <!--                    app:layout_constraintEnd_toEndOf="parent"-->
-    <!--                    app:layout_constraintTop_toTopOf="parent"-->
-    <!--                    android:scrollbars="none">-->
-
-    <!--                    <TextView-->
-    <!--                        android:id="@+id/view_operation"-->
-    <!--                        android:layout_width="wrap_content"-->
-    <!--                        android:layout_height="wrap_content"-->
-    <!--                        android:fontFamily="@font/digital"-->
-    <!--                        android:lines="1"-->
-    <!--                        android:text="@string/number_init"-->
-    <!--                        android:textColor="@color/black"-->
-    <!--                        android:textSize="45sp" />-->
-    <!--                </HorizontalScrollView>-->
-
-    <!--                <TextView-->
-    <!--                    android:id="@+id/view_result"-->
-    <!--                    android:layout_width="wrap_content"-->
-    <!--                    android:layout_height="wrap_content"-->
-    <!--                    android:fontFamily="@font/digital"-->
-    <!--                    android:gravity="bottom"-->
-    <!--                    android:text="@string/number_init"-->
-    <!--                    android:textColor="@color/black"-->
-    <!--                    android:textSize="50sp"-->
-    <!--                    app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--                    app:layout_constraintEnd_toEndOf="parent" />-->
-
-    <!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
-
-    <!--        </LinearLayout>-->
-
-    <!--    </LinearLayout>-->
     <LinearLayout
         android:id="@+id/view_screen"
         android:layout_width="match_parent"
-        android:paddingHorizontal="30dp"
-        android:paddingBottom="10dp"
         android:layout_height="220dp"
         android:orientation="vertical"
+        android:paddingHorizontal="30dp"
+        android:paddingBottom="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <HorizontalScrollView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:paddingStart="10dp"
-            android:layout_weight="1"
-            android:scrollbars="none">
-
-            <TextView
-                android:id="@+id/view_operation"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/lato_light"
-                android:lines="1"
-                android:text="@string/number_init"
-                android:textColor="@color/number_color_dark"
-                android:textSize="60sp" />
-        </HorizontalScrollView>
+        app:layout_constraintTop_toBottomOf="@+id/view_operation">
 
         <TextView
             android:id="@+id/view_result"
